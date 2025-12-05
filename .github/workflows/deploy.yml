@@ -6,6 +6,10 @@ on:
 
 jobs:
   deploy:
+    # Allow this job to write repository contents and Pages so the deploy action can push
+    permissions:
+      contents: write
+      pages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
