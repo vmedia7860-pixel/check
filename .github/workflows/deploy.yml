@@ -26,6 +26,17 @@ jobs:
       - name: Build
         working-directory: frontEnd
         run: npm run build
+
+      - name: Show build output (debug)
+        run: |
+          echo "Contents of frontEnd/dist:"
+          if [ -d "frontEnd/dist" ]; then
+            ls -la frontEnd/dist || true
+            echo "Recursive list:"
+            find frontEnd/dist -maxdepth 3 -type f -print || true
+          else
+            echo "frontEnd/dist does not exist"
+          fi
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
